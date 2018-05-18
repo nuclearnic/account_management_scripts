@@ -14,20 +14,20 @@ new_users = %w[manguy_1 manguy_2]
 new_users.each do |new_user|
   password = SecureRandom.hex
 
-  user_resp = client.create_user({
-    user_name: new_user,
-  }).to_h
+  user_resp = client.create_user(
+    user_name: new_user
+  ).to_h
 
-  client.create_login_profile({
+  client.create_login_profile(
     password: password,
     password_reset_required: true,
     user_name: user_resp[:user][:user_name]
-  })
+  )
 
-  client.add_user_to_group({
+  client.add_user_to_group(
     group_name: 'makers',
     user_name: user_resp[:user][:user_name]
-  })
+  )
 
   puts 'username: ' + user_resp[:user][:user_name]
   puts 'password: ' + password
