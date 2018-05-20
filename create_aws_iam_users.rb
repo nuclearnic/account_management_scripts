@@ -9,7 +9,7 @@ client = Aws::IAM::Client.new(
 )
 
 # insert github user names here
-new_users = %w[manguy_1 manguy_2]
+new_users = %w[]
 
 new_users.each do |new_user|
   password = SecureRandom.hex
